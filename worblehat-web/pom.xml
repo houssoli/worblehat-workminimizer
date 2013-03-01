@@ -10,11 +10,9 @@
 		<relativePath>../worblehat-build</relativePath>
 	</parent>
 
-	<groupId>de.codecentric.psd</groupId>
 	<name>worblehat-web</name>
 	<artifactId>worblehat-web</artifactId>
 	<packaging>war</packaging>
-	<version>1.4.0-SNAPSHOT</version>
 
 	<url>http://${env.PSD_SERVER}/site/worblehat-web</url>
 	<dependencies>

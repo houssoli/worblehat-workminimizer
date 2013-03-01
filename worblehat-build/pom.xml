@@ -260,14 +260,6 @@
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
-		<repository>
-			<snapshots>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<id>psd-teamserver</id>
-			<name>teamserver</name>
-			<url>http://${env.PSD_SERVER}/repo/</url>
-		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>

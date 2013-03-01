@@ -7,11 +7,8 @@
 		<version>1.4.0-SNAPSHOT</version>
 		<relativePath>../worblehat-build</relativePath>
 	</parent>
-	<groupId>de.codecentric.psd</groupId>
 	<artifactId>worblehat-domain</artifactId>
 	<name>worblehat-domain</name>
-	<version>1.4.0-SNAPSHOT</version>
-
 	<properties>
 		<psd.dbserver.url>jdbc:mysql://localhost/worblehat</psd.dbserver.url>
 		<psd.dbserver.username>worblehat</psd.dbserver.username>
