@@ -57,6 +57,9 @@ public class ValidateAddBook implements Validator {
 			if (!isbnValidator.isValid(cmd.getIsbn())) {
 				errors.rejectValue("isbn", "notvalid");
 			}
+
+			// TODO check if ISBN is in DB
+
 		}
 	}
 
