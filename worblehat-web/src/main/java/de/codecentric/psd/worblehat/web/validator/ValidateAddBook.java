@@ -46,7 +46,7 @@ public class ValidateAddBook implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description",
 				"empty");
 		if (!errors.hasFieldErrors("description")) {
-			if (cmd.getDescription().length() > 999) {
+			if (cmd.getDescription().length() > 2999) {
 				errors.rejectValue("description", "notvalid");
 			}
 		}
@@ -71,8 +71,6 @@ public class ValidateAddBook implements Validator {
 			if (!isbnValidator.isValid(cmd.getIsbn())) {
 				errors.rejectValue("isbn", "notvalid");
 			}
-
-			// TODO check if ISBN is in DB
 
 		}
 	}
