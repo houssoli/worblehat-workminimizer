@@ -26,7 +26,9 @@
 		<form:errors path="year" />
 
 		<br />
-			Description: <form:input id="description" path="description" />
+			Description: <form:textarea id="description" path="description" cols="40" rows="10" />
+			
+			
 			<form:errors path="description" />
 			<br />
 		<input type="submit" id="addBook" value="Add Book" />

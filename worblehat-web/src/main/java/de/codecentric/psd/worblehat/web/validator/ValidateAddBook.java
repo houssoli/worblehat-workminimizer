@@ -36,6 +36,20 @@ public class ValidateAddBook implements Validator {
 		checkThatYearIsFilledAndValid(errors, cmd);
 		checkThatIsbnIsFilledAndValid(errors, cmd);
 		checkThatEditionisFilledAndValid(errors, cmd);
+		checkThatDescriptionIsFilledAndValid(errors, cmd);
+
+	}
+
+	private void checkThatDescriptionIsFilledAndValid(Errors errors,
+			BookDataFormData cmd) {
+
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description",
+				"empty");
+		if (!errors.hasFieldErrors("description")) {
+			if (cmd.getDescription().length() > 999) {
+				errors.rejectValue("description", "notvalid");
+			}
+		}
 
 	}
 

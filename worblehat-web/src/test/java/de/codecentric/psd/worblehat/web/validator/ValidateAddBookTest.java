@@ -29,6 +29,7 @@ public class ValidateAddBookTest {
 		cmd.setIsbn("90-70002-34-5");
 		cmd.setTitle("title");
 		cmd.setYear("2010");
+		cmd.setDescription("Eine Beschreibung");
 	}
 
 	@Test
@@ -41,7 +42,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForEmptyTitle() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setTitle("");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(1));
 	}
 
@@ -49,7 +50,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForWhitespaceTitle() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setTitle("    ");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(1));
 	}
 
@@ -57,7 +58,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForNullTitle() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setTitle(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(1));
 	}
 
@@ -66,9 +67,10 @@ public class ValidateAddBookTest {
 		String title = "Title";
 		cmd.setTitle(title);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(0));
-		String errorFieldValue = errors.getFieldValue("title").toString();;
+		String errorFieldValue = errors.getFieldValue("title").toString();
+		;
 		assertThat(errorFieldValue, is(title));
 	}
 
@@ -76,7 +78,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForEmptyYear() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setYear("");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(1));
 	}
 
@@ -84,7 +86,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForWhiteSpaceYear() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setYear("     ");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(1));
 	}
 
@@ -92,7 +94,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForNullYear() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setYear(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		assertThat(errors.getErrorCount(), is(1));
 	}
 
@@ -101,7 +103,7 @@ public class ValidateAddBookTest {
 		String year = "2009";
 		cmd.setYear(year);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		String errorFieldValue = errors.getFieldValue("year").toString();
 		assertThat(errors.getErrorCount(), is(0));
 		assertThat(errorFieldValue, is(year));
@@ -112,7 +114,7 @@ public class ValidateAddBookTest {
 		String year = "200a";
 		cmd.setYear(year);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -121,7 +123,7 @@ public class ValidateAddBookTest {
 		String year = "20099";
 		cmd.setYear(year);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -129,7 +131,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForEmptyISBN() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setIsbn("         ");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -137,7 +139,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForNullISBN() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setIsbn(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -146,7 +148,7 @@ public class ValidateAddBookTest {
 		String isbn13 = "90-70002-34-5";
 		cmd.setIsbn(isbn13);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Object value = errors.getFieldValue("isbn");
 		Assert.assertEquals(0, errors.getErrorCount());
 		Assert.assertEquals(isbn13, value);
@@ -157,7 +159,7 @@ public class ValidateAddBookTest {
 		String isbn13 = "978-3492285100-22";
 		cmd.setIsbn(isbn13);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -165,7 +167,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForEmptyAutor() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setAuthor(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -173,7 +175,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForWhitespaceAutor() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setAuthor("    ");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -181,7 +183,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForNullAutor() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setAuthor(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -190,7 +192,7 @@ public class ValidateAddBookTest {
 		String title = "Title";
 		cmd.setAuthor(title);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Object value = errors.getFieldValue("author");
 		Assert.assertEquals(0, errors.getErrorCount());
 		Assert.assertEquals(title, value);
@@ -200,7 +202,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForEmptyEdition() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setEdition(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -208,7 +210,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForWhitespaceEdition() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setEdition("    ");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -216,7 +218,7 @@ public class ValidateAddBookTest {
 	public void shouldFailForNullEdition() {
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		cmd.setEdition(null);
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
@@ -225,7 +227,7 @@ public class ValidateAddBookTest {
 		String edition = "2";
 		cmd.setEdition(edition);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Object value = errors.getFieldValue("edition");
 		Assert.assertEquals(0, errors.getErrorCount());
 		Assert.assertEquals(edition, value);
@@ -236,7 +238,7 @@ public class ValidateAddBookTest {
 		String edition = "2a";
 		cmd.setEdition(edition);
 		Errors errors = new BindException(cmd, "cmdBookdData");
-		validateAddBook.validate((BookDataFormData) cmd, errors);
+		validateAddBook.validate(cmd, errors);
 		Assert.assertEquals(1, errors.getErrorCount());
 	}
 
