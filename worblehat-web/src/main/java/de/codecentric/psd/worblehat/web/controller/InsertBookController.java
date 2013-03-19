@@ -57,6 +57,10 @@ public class InsertBookController {
 			BindingResult result) {
 
 		modelMap.put("bookDataFormData", cmd);
+
+		// Entferne Leerzeichen am Ende
+		cmd.setIsbn(cmd.getIsbn().trim());
+
 		validateAddBook.validate(cmd, result);
 
 		if (result.hasErrors()) {
