@@ -58,9 +58,7 @@ public class InsertBookController {
 
 		modelMap.put("bookDataFormData", cmd);
 
-		// Entferne Leerzeichen am Ende
-		cmd.setIsbn(cmd.getIsbn().trim());
-
+		cmd.setIsbn(trimIsbn(cmd.getIsbn()));
 		validateAddBook.validate(cmd, result);
 
 		if (result.hasErrors()) {
@@ -79,4 +77,16 @@ public class InsertBookController {
 		}
 	}
 
+	public static String trimIsbn(String isbn) {
+		// Entferne Leerzeichen am Ende
+		isbn = isbn.trim();
+
+		// Entferne Bindestriche
+		isbn = isbn.replace("-", "");
+
+		// Entferne Leerzeichen in der Mitte
+		isbn = isbn.replace(" ", "");
+
+		return isbn;
+	}
 }
