@@ -14,7 +14,7 @@
 		<form:errors path="title" />
 		<br />
             Edition:<form:input id="edition" path="edition" />
-		<form:errors path="edition" />
+		<p><form:errors path="edition" />   
 		<br />
             ISBN:<form:input id="isbn" path="isbn" />
 		<form:errors path="isbn" />
@@ -35,7 +35,7 @@
 		<hr/>
 		<a href="<spring:url value="/" htmlEscape="true" />">Back to Home</a>
 	</form:form>
-
+	
 
 </body>
 </html>
