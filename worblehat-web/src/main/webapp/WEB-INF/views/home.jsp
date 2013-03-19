@@ -15,6 +15,6 @@
    <li><a href="<spring:url value="/borrow" htmlEscape="true" />">Borrow Book</a></li>
    <li><a id="returnAllBooks" href="<spring:url value="/returnAllBooks" htmlEscape="true" />">Return all Books</a></li>
    <!-- <li><a href="<spring:url value="/showBorrowedBooks" htmlEscape="true" />">Show borrowed Books</a></li>  -->
-</ul>
+</ul> 
 </body>
 </html>
