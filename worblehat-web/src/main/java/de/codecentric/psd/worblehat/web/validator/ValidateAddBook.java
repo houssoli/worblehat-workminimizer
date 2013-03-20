@@ -68,11 +68,47 @@ public class ValidateAddBook implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isbn", "empty");
 		if (!errors.hasFieldErrors("isbn")) {
 			ISBNValidator isbnValidator = new ISBNValidator();
-			if (!isbnValidator.isValid(cmd.getIsbn())) {
+			String isbn = "";
+			if (cmd.getIsbn().length() > 10) {
+				isbn = ConvertISBN13To10(cmd.getIsbn());
+				cmd.setIsbn13(isbn);
+			} /*
+			 * else { isbn = cmd.getIsbn(); }
+			 */
+
+			if (!(isbnValidator.isValid(cmd.getIsbn()) || isbnValidator
+					.isValid(cmd.getIsbn13()))) {
 				errors.rejectValue("isbn", "notvalid");
 			}
 
 		}
+	}
+
+	private static String ConvertISBN13To10(String isbn) {
+		char[] isbn13 = new char[13];
+		int[] isbn10 = new int[10];
+		StringBuilder sb;
+		int checksum;
+
+		isbn13 = isbn.toCharArray();
+
+		for (int i = 3, j = 0; i < 12; i++, j++) {
+			isbn10[j] = Character.getNumericValue(isbn13[i]);// Integer.parseInt(isbn13[i]
+																// + "");
+		}
+		checksum = 0;
+		sb = new StringBuilder();
+		for (int i = 0; i < 9; i++) {
+			checksum += isbn10[i] * (i + 1);
+			sb.append(isbn10[i] + "");
+		}
+		checksum %= 11;
+		if (checksum == 10) {
+			sb.append("X");
+		} else {
+			sb.append(checksum + "");
+		}
+		return (sb.toString());
 	}
 
 	private void checkThatYearIsFilledAndValid(Errors errors,
