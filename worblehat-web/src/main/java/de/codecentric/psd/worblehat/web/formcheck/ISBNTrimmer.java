@@ -1,5 +1,11 @@
 package de.codecentric.psd.worblehat.web.formcheck;
 
+/**
+ * ISBNTrimmer entfernt Leerzeichen und Bindestriche in einer ISBN
+ * 
+ * @author asf8
+ * 
+ */
 public class ISBNTrimmer {
 
 	public ISBNTrimmer() {

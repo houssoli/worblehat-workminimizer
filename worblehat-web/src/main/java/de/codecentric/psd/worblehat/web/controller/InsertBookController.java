@@ -34,7 +34,6 @@ public class InsertBookController {
 	@Inject
 	private BookFactory bookFactory;
 
-	@Inject
 	private ISBNTrimmer isbnTrimmer = new ISBNTrimmer();
 
 	private final ValidateAddBook validateAddBook = new ValidateAddBook();
