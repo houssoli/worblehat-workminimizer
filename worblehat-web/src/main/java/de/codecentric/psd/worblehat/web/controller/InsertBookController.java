@@ -18,6 +18,7 @@ import de.codecentric.psd.worblehat.domain.Book;
 import de.codecentric.psd.worblehat.domain.BookFactory;
 import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
+import de.codecentric.psd.worblehat.web.formcheck.ISBNTrimmer;
 import de.codecentric.psd.worblehat.web.validator.ValidateAddBook;
 
 /**
@@ -32,6 +33,8 @@ public class InsertBookController {
 
 	@Inject
 	private BookFactory bookFactory;
+
+	private ISBNTrimmer isbnTrimmer = new ISBNTrimmer();
 
 	private final ValidateAddBook validateAddBook = new ValidateAddBook();
 
@@ -58,7 +61,8 @@ public class InsertBookController {
 
 		modelMap.put("bookDataFormData", cmd);
 
-		cmd.setIsbn(trimIsbn(cmd.getIsbn()));
+		cmd.setIsbn(isbnTrimmer.trimISBN(cmd.getIsbn()));
+
 		validateAddBook.validate(cmd, result);
 
 		if (result.hasErrors()) {
@@ -77,16 +81,4 @@ public class InsertBookController {
 		}
 	}
 
-	public static String trimIsbn(String isbn) {
-		// Entferne Leerzeichen am Ende
-		isbn = isbn.trim();
-
-		// Entferne Bindestriche
-		isbn = isbn.replace("-", "");
-
-		// Entferne Leerzeichen in der Mitte
-		isbn = isbn.replace(" ", "");
-
-		return isbn;
-	}
 }
