@@ -31,5 +31,10 @@
 				verbessert.
 			</action>
 		</release>
+		<release version="3.1.0" date="2013-03-20" description="ISBN-13 eingefuehrt">
+			<action dev="workminimizer" type="update">
+				ISBN-13-Nummern werden angenommen, Fehlermeldungen verbessert (Umlaute entfernt)
+			</action>
+		</release>
 	</body>
 </document>
