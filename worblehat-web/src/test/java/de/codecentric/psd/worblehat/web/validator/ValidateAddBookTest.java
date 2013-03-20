@@ -145,7 +145,7 @@ public class ValidateAddBookTest {
 
 	@Test
 	public void shouldValidateISBN10() {
-		String isbn13 = "90-70002-34-5";
+		String isbn13 = "9070002345";
 		cmd.setIsbn(isbn13);
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		validateAddBook.validate(cmd, errors);
@@ -156,7 +156,7 @@ public class ValidateAddBookTest {
 
 	@Test
 	public void shouldFailForInvalidISBN() {
-		String isbn13 = "978-3492285100-22";
+		String isbn13 = "978-3492285s100-2";
 		cmd.setIsbn(isbn13);
 		Errors errors = new BindException(cmd, "cmdBookdData");
 		validateAddBook.validate(cmd, errors);

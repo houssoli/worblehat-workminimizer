@@ -7,6 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
+import de.codecentric.psd.worblehat.web.formcheck.ISBNTrimmer;
 
 /**
  * Validation for adding a book
@@ -15,6 +16,8 @@ import de.codecentric.psd.worblehat.web.command.BookDataFormData;
  * 
  */
 public class ValidateAddBook implements Validator {
+
+	private ISBNTrimmer isbnTrimmer = new ISBNTrimmer();
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -67,6 +70,7 @@ public class ValidateAddBook implements Validator {
 			BookDataFormData cmd) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "isbn", "empty");
 		if (!errors.hasFieldErrors("isbn")) {
+			cmd.setIsbn(isbnTrimmer.trimISBN(cmd.getIsbn()));
 			ISBNValidator isbnValidator = new ISBNValidator();
 			String isbn = "";
 			if (cmd.getIsbn().length() > 10) {
