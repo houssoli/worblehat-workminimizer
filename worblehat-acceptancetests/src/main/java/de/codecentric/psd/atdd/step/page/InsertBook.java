@@ -35,7 +35,8 @@ public class InsertBook {
 	@When("a book with ISBN <isbn> is added")
 	public void whenABookWithISBNisbnIsAdded(@Named("isbn") String isbn) {
 		openInsertBooksPage();
-		fillInsertBookForm("Title", "2", isbn, "Author", "2002");
+		fillInsertBookForm("Title", "2", isbn, "Author", "2002",
+				"Eine Beschreibung");
 		submitForm();
 	}
 
@@ -43,7 +44,8 @@ public class InsertBook {
 	public void addABook(@Named("attribute") String attribute,
 			@Named("value") String value) {
 		openInsertBooksPage();
-		fillInsertBookForm("Title", "1", "123456789X", "Author", "2002");
+		fillInsertBookForm("Title", "1", "123456789X", "Author", "2002",
+				"Eine Beschreibung");
 		typeIntoField(getIdForAttribute(attribute), value);
 		submitForm();
 	}
@@ -52,16 +54,15 @@ public class InsertBook {
 	// *** T H E N *****
 	// *****************
 
-
 	@Then("the page contains error message <message>")
-	public void thenThePageContainsErrorMessagemessage(@Named("message") String message){
+	public void thenThePageContainsErrorMessagemessage(
+			@Named("message") String message) {
 		assertThat(driver.getPageSource(), containsString(message));
 	}
 
 	// *****************
-	// *** U T I L ***** 
+	// *** U T I L *****
 	// *****************
-
 
 	private void setTitle(String titel) {
 		typeIntoField("title", titel);
@@ -83,6 +84,11 @@ public class InsertBook {
 		typeIntoField("isbn", isbn);
 	}
 
+	private void setDescription(String description) {
+		typeIntoField("description", description);
+
+	}
+
 	private void typeIntoField(String id, String value) {
 		WebElement element = driver.findElement(By.id(id));
 		element.clear();
@@ -90,16 +96,23 @@ public class InsertBook {
 	}
 
 	private void fillInsertBookForm(String titel, String edition, String isbn,
-			String author, String year) {
+			String author, String year, String description) {
 		setTitle(titel);
 		setEdition(edition);
 		setIsbn(isbn);
 		setAuthor(author);
 		setYear(year);
+		setDescription(description);
 	}
 
 	private void submitForm() {
 		driver.findElement(By.id("addBook")).click();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 	private void openInsertBooksPage() {
