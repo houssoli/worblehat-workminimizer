@@ -15,6 +15,6 @@ And the page contains error message <message>
 Examples:
  
 | attribute | value      | message               |
-| ISBN      | 5234567969 | ISBN is not valid     |
-| Edition   | 2. Edition | Edition is not valid  |
+| ISBN      | 5234567969 | Falsche ISBN!	     |
+| Edition   | 2. Edition | Falsche Edition! 	 |
 

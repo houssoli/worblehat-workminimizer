@@ -64,6 +64,7 @@ public class InsertBookControllerTest {
 		cmd.setTitle("Test with JUnit");
 		cmd.setYear("1999");
 		cmd.setDescription("JUnit Test Description");
+
 		when(mockBindingResult.hasErrors()).thenReturn(false);
 		String path = insertBookController.processSubmit(mockRequest,
 				mockModelMap, cmd, mockBindingResult);
