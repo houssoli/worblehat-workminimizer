@@ -20,7 +20,7 @@ import de.codecentric.psd.worblehat.web.command.BookBorrowFormData;
 import de.codecentric.psd.worblehat.web.validator.ValidateBorrowBook;
 
 /**
- * Controller for BorrowingBook
+ * Controller for BorrowingBook.
  * 
  * @author mahmut.can
  * 
