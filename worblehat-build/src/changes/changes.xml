@@ -32,9 +32,15 @@
 			</action>
 		</release>
 		
-		<release version="2.7.0" date="2013-03-19" description="Funktions- und Testerweiterung">
+		<release version="2.7.0" date="2013-03-21" description="Funktions- und Testerweiterung">
 			<action dev="workminimizer" type="update">
 				Keine doppelten ISBN-10-Nummern. Erfolgreiche ATDD-Tests.
+			</action>
+		</release>
+		
+		<release version="2.8.0" date="2013-03-21" description="Designupdate">
+			<action dev="workminimizer" type="update">
+				Design-Update, Funktion "Show borrowed books"
 			</action>
 		</release>
 	</body>

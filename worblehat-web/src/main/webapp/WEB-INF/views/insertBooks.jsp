@@ -7,35 +7,85 @@
 <title>Add Book - Worblehat Bookmanager</title>
 </head>
 <body>
-	<h1>Add Book</h1>
+
+<div style="width: 200px; float: left;">
+<b>Users</b>
+	<ul style="list-style-type:none; 
+	margin-left:20px; 
+	color : #000000;
+	background-color: #FFFFFF;
+	font-weight: normal;
+	vertical-align: top;" >
+<li style="padding-left: 10px"><a href="<spring:url value="/bookList" htmlEscape="true" />" >List all Books</a></li>
+   <li style="padding-left: 10px"><a href="<spring:url value="/borrow" htmlEscape="true" />" >Borrow Book</a></li>
+   <li style="padding-left: 10px"><a id="returnAllBooks" href="<spring:url value="/returnAllBooks" htmlEscape="true" />" >Return all Books</a></li>
+    <li style="padding-left: 10px"><a href="<spring:url value="/showBorrowedBooks" htmlEscape="true" />">Show borrowed Books</a></li>  
+   </ul>
+  <b>Administrators</b>
+  <ul style="list-style-type:none; 
+	margin-left:20px; 
+	color : #000000;
+	background-color: #FFFFFF;
+	font-weight: normal;
+	vertical-align: top;" >
+  <li style="padding-left: 10px"><a href="<spring:url value="/insertBooks" htmlEscape="true" />" >Add a new book</a></li>
+   <!-- <li><a href="<spring:url value="/showBorrowedBooks" htmlEscape="true" />">Show borrowed Books</a></li>  -->
+</ul> </p>
+</div><div>
+	<h1>Add A New Book</h1>
 
 	<form:form commandName="bookDataFormData" method="POST">
-            Title:<form:input id="title" path="title" />
-		<form:errors path="title" />
-		<br />
-            Edition:<form:input id="edition" path="edition" />
-		<p><form:errors path="edition" />   
-		<br />
-            ISBN:<form:input id="isbn" path="isbn" />
-		<form:errors path="isbn" />
-		<br />
-            Author:<form:input id="author" path="author" />
-		<form:errors path="author" />
-		<br />
-            Year:<form:input id="year" path="year" />
-		<form:errors path="year" />
+	
+	<table>
+		<tr>
+		<td>Title</td>
+		<td><form:input id="title" path="title" />
+		</td>
+		<td><form:errors path="title" /></td>
+		</tr>
+		
+		<tr>
+		<td>Author</td>
+		<td><form:input id="author" path="author" /></td>
+		<td><form:errors path="author" /></td>
+		</tr>
+		
+		<tr>
+		<td>Year</td>
+		<td><form:input id="year" path="year" size="4"/></td>
+		<td><form:errors path="year" /></td>
+		</tr>
+		
+		<tr>
+		<td>Edition</td>
+		<td><form:input id="edition" path="edition" />
+		</td>
+		<td><form:errors path="edition" /> </td>
+		</tr>
+		
+		<tr>
+		<td>ISBN</td>
+		<td><form:input id="isbn" path="isbn" /></td>
+		<td><form:errors path="isbn" /></td>
+		</tr>
+		
 
-		<br />
-			Description: <form:textarea id="description" path="description" cols="40" rows="10" />
-			
-			
-			<form:errors path="description" />
-			<br />
-		<input type="submit" id="addBook" value="Add Book" />
+		<tr>
+		<td>Description</td>
+		<td> <form:textarea id="description" path="description" cols="40" rows="10" /></td>
+		<td><form:errors path="description" /></td>
+		</tr>
+		<tr>
+		<td colspan="2">
+			<input type="submit" id="addBook" value="Add Book" /></td>
+		</tr>
+	</table>
+           
+		
 		<hr/>
 		<a href="<spring:url value="/" htmlEscape="true" />">Back to Home</a>
 	</form:form>
 	
-
+</div>
 </body>
 </html>
