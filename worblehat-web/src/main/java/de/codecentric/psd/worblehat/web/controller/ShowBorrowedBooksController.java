@@ -53,10 +53,7 @@ public class ShowBorrowedBooksController {
 					.findAllBorrowedBooksByBorrower(formData.getEmailAddress());
 			modelMap.addAttribute("books", books);
 			return "bookList";
-			/*
-			 * bookService.showBorrowedBooks(formData.getEmailAddress()); return
-			 * "/home";
-			 */
+
 		}
 	}
 
