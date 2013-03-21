@@ -30,12 +30,21 @@ public class StandardBookService implements BookService {
 	@Override
 	public void returnAllBooksByBorrower(String string) {
 		List<Book> borrowBooks = bookRepository
-				.findAllBorrowBooksByBorrower(string);
+				.findAllBorrowedBooksByBorrower(string);
 		for (Book book : borrowBooks) {
 			book.returnBook();
 
 		}
 
+	}
+
+	@Override
+	public void showBorrowedBooks(String string) {
+		List<Book> borrowBooks = bookRepository
+				.findAllBorrowedBooksByBorrower(string);
+		for (Book book : borrowBooks) {
+
+		}
 	}
 
 }

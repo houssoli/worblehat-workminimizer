@@ -63,7 +63,7 @@ public class BookRepositoryTest {
 		when(queryMock.getResultList()).thenReturn(result);
 
 		List<Book> books = bookRepository
-				.findAllBorrowBooksByBorrower("test@test.de");
+				.findAllBorrowedBooksByBorrower("test@test.de");
 		assertEquals(1, books.size());
 	}
 

@@ -8,18 +8,29 @@ package de.codecentric.psd.worblehat.web.command;
  */
 public class ShowBorrowedBooksFormData {
 
-	private String emailAdress;
+	private String emailAddress;
 
+	/**
+	 * Empty constructor, required by Spring Framework.
+	 */
 	public ShowBorrowedBooksFormData() {
 		super();
 	}
 
-	public String getEmail() {
-		return emailAdress;
+	/**
+	 * @param emailAddress
+	 *            the user email address
+	 */
+	public ShowBorrowedBooksFormData(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
-	public void setEmail(String email) {
-		this.emailAdress = email;
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String email) {
+		this.emailAddress = email;
 	}
 
 }

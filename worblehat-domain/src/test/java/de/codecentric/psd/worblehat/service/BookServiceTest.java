@@ -43,7 +43,7 @@ public class BookServiceTest {
 	public void shouldReturnAllBooksOfOnePerson() {
 		List<Book> result = new ArrayList<Book>();
 		result.add(testBook);
-		when(bookRepository.findAllBorrowBooksByBorrower(anyString()))
+		when(bookRepository.findAllBorrowedBooksByBorrower(anyString()))
 				.thenReturn(result);
 
 		bookService.returnAllBooksByBorrower("test@test.de");
