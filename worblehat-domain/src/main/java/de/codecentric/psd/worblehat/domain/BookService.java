@@ -10,4 +10,6 @@ public interface BookService {
 
 	void returnAllBooksByBorrower(String string);
 
+	void showBorrowedBooks(String string);
+
 }

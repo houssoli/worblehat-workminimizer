@@ -103,7 +103,7 @@ public class BookRepository {
 	 * @return all books the given user is currently borrowing
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Book> findAllBorrowBooksByBorrower(String email) {
+	public List<Book> findAllBorrowedBooksByBorrower(String email) {
 		Query query = em.createNamedQuery("findAllBorrowedBooksByEmail");
 
 		return query.setParameter("email", email).getResultList();
