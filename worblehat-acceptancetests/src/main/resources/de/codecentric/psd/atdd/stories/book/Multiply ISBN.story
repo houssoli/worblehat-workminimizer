@@ -17,8 +17,3 @@ Examples:
 | isbn       | message |
 | 1111111111 | Die ISBN ist nicht eindeutig! Bitte geben Sie eine eindeutige ISBN ein! |
 
-
-
-
-
-

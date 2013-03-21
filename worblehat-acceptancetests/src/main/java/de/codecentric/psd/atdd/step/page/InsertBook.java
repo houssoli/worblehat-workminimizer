@@ -46,7 +46,7 @@ public class InsertBook {
 		fillInsertBookForm("Title", "2", isbn, "Author", "2002",
 				"Eine Beschreibung");
 		submitForm();
-		openHome();
+		openInsertBooksPage();
 		fillInsertBookForm("Title", "2", isbn, "Author", "2002",
 				"Eine Beschreibung");
 		submitForm();
@@ -130,11 +130,6 @@ public class InsertBook {
 	private void openInsertBooksPage() {
 		driver.get(Config.getApplicationURL() + "/"
 				+ Config.getApplicationContext() + "/insertBooks");
-	}
-
-	private void openHome() {
-		driver.get(Config.getApplicationURL() + "/"
-				+ Config.getApplicationContext());
 	}
 
 	private String getIdForAttribute(String attribute) {
