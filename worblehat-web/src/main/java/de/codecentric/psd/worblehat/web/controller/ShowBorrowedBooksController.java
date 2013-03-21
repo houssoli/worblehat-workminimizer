@@ -49,11 +49,14 @@ public class ShowBorrowedBooksController {
 		if (result.hasErrors()) {
 			return "/showBorrowedBooks";
 		} else {
-			List<Book> books = bookRepository.findAllBorrowedBooksByBorrower();
+			List<Book> books = bookRepository
+					.findAllBorrowedBooksByBorrower(formData.getEmailAddress());
 			modelMap.addAttribute("books", books);
 			return "bookList";
-			bookService.showBorrowedBooks(formData.getEmailAddress());
-			return "/home";
+			/*
+			 * bookService.showBorrowedBooks(formData.getEmailAddress()); return
+			 * "/home";
+			 */
 		}
 	}
 
