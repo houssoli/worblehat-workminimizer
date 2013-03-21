@@ -40,6 +40,18 @@ public class InsertBook {
 		submitForm();
 	}
 
+	@When("a book with ISBN <isbn> is added twice")
+	public void whenABookWithISBNisbnIsAddedTwice(@Named("isbn") String isbn) {
+		openInsertBooksPage();
+		fillInsertBookForm("Title", "2", isbn, "Author", "2002",
+				"Eine Beschreibung");
+		submitForm();
+		openHome();
+		fillInsertBookForm("Title", "2", isbn, "Author", "2002",
+				"Eine Beschreibung");
+		submitForm();
+	}
+
 	@When("the librarian tries to add a book with an <attribute> of <value>")
 	public void addABook(@Named("attribute") String attribute,
 			@Named("value") String value) {
@@ -118,6 +130,11 @@ public class InsertBook {
 	private void openInsertBooksPage() {
 		driver.get(Config.getApplicationURL() + "/"
 				+ Config.getApplicationContext() + "/insertBooks");
+	}
+
+	private void openHome() {
+		driver.get(Config.getApplicationURL() + "/"
+				+ Config.getApplicationContext());
 	}
 
 	private String getIdForAttribute(String attribute) {
