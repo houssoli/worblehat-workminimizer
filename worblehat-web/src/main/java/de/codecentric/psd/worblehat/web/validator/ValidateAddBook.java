@@ -75,13 +75,13 @@ public class ValidateAddBook implements Validator {
 			String isbn = "";
 			if (cmd.getIsbn().length() > 10) {
 				isbn = ConvertISBN13To10(cmd.getIsbn());
-				cmd.setIsbn13(isbn);
+
 			} /*
 			 * else { isbn = cmd.getIsbn(); }
 			 */
 
 			if (!(isbnValidator.isValid(cmd.getIsbn()) || isbnValidator
-					.isValid(cmd.getIsbn13()))) {
+					.isValid(isbn))) {
 				errors.rejectValue("isbn", "notvalid");
 			}
 

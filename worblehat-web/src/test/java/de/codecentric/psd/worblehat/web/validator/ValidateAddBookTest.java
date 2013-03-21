@@ -26,7 +26,7 @@ public class ValidateAddBookTest {
 		cmd = new BookDataFormData();
 		cmd.setAuthor("author");
 		cmd.setEdition("2");
-		cmd.setIsbn("90-70002-34-5");
+		cmd.setIsbn("978-1430237235");
 		cmd.setTitle("title");
 		cmd.setYear("2010");
 		cmd.setDescription("Eine Beschreibung");
