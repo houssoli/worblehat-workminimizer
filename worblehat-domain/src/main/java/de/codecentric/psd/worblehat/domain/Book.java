@@ -20,7 +20,8 @@ import javax.persistence.OneToOne;
 @NamedQueries({
 		@NamedQuery(name = "findBorrowableBookByISBN", query = "from Book where isbn=:isbn and currentBorrowing is null"),
 		@NamedQuery(name = "findAllBorrowedBooksByEmail", query = "select book from Book as book where book.currentBorrowing.borrowerEmailAddress = :email"),
-		@NamedQuery(name = "findAllBooks", query = "from Book order by title") })
+		@NamedQuery(name = "findAllBooks", query = "from Book order by title"),
+		@NamedQuery(name = "checkMultipleIsbn", query = "from Book where isbn = :isbn") })
 public class Book implements Serializable {
 
 	private static final long serialVersionUID = 1L;

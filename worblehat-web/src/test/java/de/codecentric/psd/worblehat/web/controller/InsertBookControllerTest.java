@@ -20,7 +20,6 @@ import org.springframework.validation.BindingResult;
 import de.codecentric.psd.worblehat.domain.BookFactory;
 import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
-import de.codecentric.psd.worblehat.web.formcheck.ISBNTrimmer;
 
 public class InsertBookControllerTest {
 
@@ -32,8 +31,6 @@ public class InsertBookControllerTest {
 
 	@Mock
 	private ModelMap mockModelMap;
-
-	private ISBNTrimmer isbnTrimmer;
 
 	@Mock
 	private BindingResult mockBindingResult;

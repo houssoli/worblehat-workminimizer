@@ -4,14 +4,18 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 
+import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
 import de.codecentric.psd.worblehat.web.command.ReturnAllBooksFormData;
 
@@ -19,10 +23,16 @@ public class ValidateAddBookTest {
 
 	private ValidateAddBook validateAddBook;
 	private BookDataFormData cmd;
+	@Mock
+	private BookRepository bookRepository;
 
 	@Before
 	public void setup() {
 		validateAddBook = new ValidateAddBook();
+		MockitoAnnotations.initMocks(this);
+		validateAddBook.setBookRepository(bookRepository);
+		when(bookRepository.checkMultipleIsbn("90-70002-34-5")).thenReturn(
+				false);
 		cmd = new BookDataFormData();
 		cmd.setAuthor("author");
 		cmd.setEdition("2");

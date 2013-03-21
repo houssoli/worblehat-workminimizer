@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,7 +19,6 @@ import de.codecentric.psd.worblehat.domain.Book;
 import de.codecentric.psd.worblehat.domain.BookFactory;
 import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
-import de.codecentric.psd.worblehat.web.formcheck.ISBNTrimmer;
 import de.codecentric.psd.worblehat.web.validator.ValidateAddBook;
 
 /**
@@ -26,7 +26,7 @@ import de.codecentric.psd.worblehat.web.validator.ValidateAddBook;
  */
 @Controller
 @RequestMapping("/insertBooks")
-public class InsertBookController {
+public class InsertBookController implements InitializingBean {
 
 	private static final Logger LOG = LoggerFactory
 			.getLogger(InsertBookController.class);
@@ -34,12 +34,14 @@ public class InsertBookController {
 	@Inject
 	private BookFactory bookFactory;
 
-	private ISBNTrimmer isbnTrimmer = new ISBNTrimmer();
-
 	private final ValidateAddBook validateAddBook = new ValidateAddBook();
 
 	@Inject
 	private BookRepository bookRepository;
+
+	public void afterPropertiesSet() throws Exception {
+		validateAddBook.setBookRepository(bookRepository);
+	}
 
 	public void setBookRepository(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
@@ -61,8 +63,7 @@ public class InsertBookController {
 
 		modelMap.put("bookDataFormData", cmd);
 
-		cmd.setIsbn(isbnTrimmer.trimISBN(cmd.getIsbn()));
-
+		cmd.setIsbn(trimIsbn(cmd.getIsbn()));
 		validateAddBook.validate(cmd, result);
 
 		if (result.hasErrors()) {
@@ -81,4 +82,16 @@ public class InsertBookController {
 		}
 	}
 
+	public static String trimIsbn(String isbn) {
+		// Entferne Leerzeichen am Ende
+		isbn = isbn.trim();
+
+		// Entferne Bindestriche
+		isbn = isbn.replace("-", "");
+
+		// Entferne Leerzeichen in der Mitte
+		isbn = isbn.replace(" ", "");
+
+		return isbn;
+	}
 }

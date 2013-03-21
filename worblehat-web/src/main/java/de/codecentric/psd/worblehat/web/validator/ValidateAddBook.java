@@ -6,6 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import de.codecentric.psd.worblehat.domain.BookRepository;
 import de.codecentric.psd.worblehat.web.command.BookDataFormData;
 
 /**
@@ -15,6 +16,12 @@ import de.codecentric.psd.worblehat.web.command.BookDataFormData;
  * 
  */
 public class ValidateAddBook implements Validator {
+
+	BookRepository bookRepository;
+
+	public void setBookRepository(BookRepository bookRepository) {
+		this.bookRepository = bookRepository;
+	}
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -72,7 +79,10 @@ public class ValidateAddBook implements Validator {
 			if (cmd.getIsbn().length() > 10) {
 				isbn = ConvertISBN13To10(cmd.getIsbn());
 				cmd.setIsbn13(isbn);
-			} /*
+			} else if (!bookRepository.checkMultipleIsbn(cmd.getIsbn())) {
+				errors.rejectValue("isbn", "exists");
+			}
+			/*
 			 * else { isbn = cmd.getIsbn(); }
 			 */
 

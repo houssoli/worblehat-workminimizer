@@ -109,4 +109,12 @@ public class BookRepository {
 		return query.getResultList();
 	}
 
+	/**
+	 * @return true, if book is not in DB
+	 */
+	public boolean checkMultipleIsbn(String isbn) {
+		Query query = em.createNamedQuery("checkMultipleIsbn");
+		return (query.setParameter("isbn", isbn).getResultList().size() == 0);
+	}
+
 }
