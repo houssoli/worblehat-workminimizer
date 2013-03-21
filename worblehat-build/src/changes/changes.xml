@@ -31,5 +31,11 @@
 				verbessert.
 			</action>
 		</release>
+		
+		<release version="2.7.0" date="2013-03-19" description="Funktions- und Testerweiterung">
+			<action dev="workminimizer" type="update">
+				Keine doppelten ISBN-10-Nummern. Erfolgreiche ATDD-Tests.
+			</action>
+		</release>
 	</body>
 </document>
