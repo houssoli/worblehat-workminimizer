@@ -26,10 +26,19 @@ public class BookListController {
 	@Inject
 	private BookRepository bookRepository;
 
+	/**
+	 * Default constructor.
+	 */
 	public BookListController() {
 		super();
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param bookRepository
+	 *            BookRepository
+	 */
 	public BookListController(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}

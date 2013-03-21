@@ -16,6 +16,12 @@ public class NoBookBorrowableException extends Exception {
 		this.isbn = isbn;
 	}
 
+	public NoBookBorrowableException(String isbn, Exception causedBy) {
+		super(causedBy);
+		this.isbn = isbn;
+
+	}
+
 	public String getIsbn() {
 		return isbn;
 	}

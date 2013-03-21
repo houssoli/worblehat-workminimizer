@@ -78,7 +78,7 @@ public class ValidateAddBook implements Validator {
 			ISBNValidator isbnValidator = new ISBNValidator();
 			String isbn = "";
 			if (cmd.getIsbn().length() > 10) {
-				isbn = ConvertISBN13To10(cmd.getIsbn());
+				isbn = convertISBN1310(cmd.getIsbn());
 				cmd.setIsbn13(isbn);
 			} else if (!bookRepository.checkMultipleIsbn(cmd.getIsbn())) {
 				errors.rejectValue("isbn", "exists");
@@ -95,7 +95,13 @@ public class ValidateAddBook implements Validator {
 		}
 	}
 
-	private static String ConvertISBN13To10(String isbn) {
+	/**
+	 * 
+	 * @param isbn
+	 *            ISBN
+	 * @return konvertierte ISBN
+	 */
+	private static String convertISBN1310(String isbn) {
 		char[] isbn13 = new char[13];
 		int[] isbn10 = new int[10];
 		StringBuilder sb;

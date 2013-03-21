@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * Borrowing Entity
+ * Borrowing Entity.
  * 
  * @author mahmut.can
  * 
@@ -38,6 +38,14 @@ public class Borrowing implements Serializable {
 		return borrowDate;
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param borrowerEmailAddress
+	 *            emailAdresse des Borrowers.
+	 * @param borrowDate
+	 *            Tag, an dem ein Buch geliehen wurde.
+	 */
 	Borrowing(String borrowerEmailAddress, Date borrowDate) {
 		super();
 		this.borrowerEmailAddress = borrowerEmailAddress;

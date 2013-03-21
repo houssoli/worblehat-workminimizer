@@ -60,6 +60,8 @@ public class Book implements Serializable {
 	 *            the isbn
 	 * @param year
 	 *            the year
+	 * @param description
+	 *            Eine Beschreibung
 	 */
 	public Book(String title, String author, String edition, String isbn,
 			int year, String description) {

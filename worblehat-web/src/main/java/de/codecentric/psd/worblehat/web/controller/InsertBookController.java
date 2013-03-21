@@ -42,6 +42,9 @@ public class InsertBookController implements InitializingBean {
 	@Inject
 	private BookRepository bookRepository;
 
+	/**
+	 * 
+	 */
 	public void afterPropertiesSet() throws Exception {
 		validateAddBook.setBookRepository(bookRepository);
 	}

@@ -10,6 +10,9 @@ public class ShowBorrowedBooksFormData {
 
 	private String emailAdress;
 
+	/**
+	 * Default constructor.
+	 */
 	public ShowBorrowedBooksFormData() {
 		super();
 	}

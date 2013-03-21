@@ -19,10 +19,19 @@ public class StandardBookService implements BookService {
 	@Autowired
 	private BookRepository bookRepository;
 
+	/**
+	 * Constructor.
+	 * 
+	 * @param bookRepository
+	 *            Bookrepository
+	 */
 	public StandardBookService(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}
 
+	/**
+	 * Default constructor.
+	 */
 	public StandardBookService() {
 		super();
 	}

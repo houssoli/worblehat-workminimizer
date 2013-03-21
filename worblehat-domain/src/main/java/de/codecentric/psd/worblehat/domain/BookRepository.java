@@ -27,13 +27,14 @@ public class BookRepository {
 	 * Constructor for test.
 	 * 
 	 * @param em
+	 *            EntityManager
 	 */
 	public BookRepository(EntityManager em) {
 		this.em = em;
 	}
 
 	/**
-	 * 
+	 * Empty Constructor.
 	 */
 	public BookRepository() {
 		// empty
@@ -53,6 +54,13 @@ public class BookRepository {
 		return query.getResultList();
 	}
 
+	/**
+	 * Select a book by ISBN and User.
+	 * 
+	 * @param isbn
+	 *            a valid ISBN_10 of a book entity
+	 * @return null if no book found
+	 */
 	public Book findBookByUserAndISBN(String email, String isbn) {
 		Query query = em.createQuery("form Book where isbn =? and email= ?")
 				.setParameter(1, isbn).setParameter(2, email);
@@ -70,6 +78,7 @@ public class BookRepository {
 	}
 
 	/**
+	 * 
 	 * @param isbn
 	 *            the ISBN to search for
 	 * @return any book with the given ISBN that is available for borrowing
@@ -84,7 +93,7 @@ public class BookRepository {
 					.setParameter("isbn", isbn).setMaxResults(1)
 					.getSingleResult();
 		} catch (NoResultException e) {
-			throw new NoBookBorrowableException(isbn);
+			throw new NoBookBorrowableException(isbn, e);
 		}
 	}
 
@@ -110,6 +119,8 @@ public class BookRepository {
 	}
 
 	/**
+	 * @param isbn
+	 *            ISBN to check
 	 * @return true, if book is not in DB
 	 */
 	public boolean checkMultipleIsbn(String isbn) {
