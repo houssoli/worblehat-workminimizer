@@ -10,12 +10,13 @@ Scenario:
 
 Given an empty library
 When a book with ISBN <isbn> is added
-Then the library contains only the book with <isbn>
+Then the library contains a book with <isbntrim>
 
 Examples:
  
-| isbn       |
-| 1234567962 |
+| isbn       | isbntrim |
+| 111 111-1111 | 1111111111 |
+| 978-9081278812 | 9789081278812 |
 
 
 

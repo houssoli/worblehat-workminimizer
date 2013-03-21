@@ -78,9 +78,10 @@ public class Library {
 	// *** T H E N *****
 	// *****************
 
-	@Then("the library contains only the book with <isbn>")
-	public void shouldContainOnlyOneBook(@Named("isbn") String isbn)
+	@Then("the library contains a book with <isbntrim>")
+	public void shouldContainABook(@Named("isbntrim") String isbn)
 			throws SQLException {
+
 		database.shouldReturnExactlyOne("SELECT * FROM Book WHERE isbn = '"
 				+ isbn + "'");
 	}
